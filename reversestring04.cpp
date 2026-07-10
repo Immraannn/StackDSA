@@ -1,47 +1,37 @@
-#include<iostream>      // For input-output operations (cout)
-#include<stack>         // For using stack data structure
+#include <iostream>
+#include <stack>
 using namespace std;
 
-int main () {
+// Function to reverse the string using a stack
+void reverseString(string &str) {
 
-    // Input string which we want to reverse
-    string str = "babbar";
+    stack<char> st;
 
-    // Create a stack of characters
-    // Stack follows LIFO (Last In First Out)
-    stack<char> s;
-
-    // Step 1: Push each character of string into the stack
-    // Loop runs from index 0 to length-1
-    for (int i = 0; i < str.length(); i++) {
-
-        // Take character at index i
-        char ch = str[i];
-
-        // Push character into stack
-        // First character goes at bottom, last at top
-        s.push(ch);
+    // Push each character of the string into the stack
+    for(int i = 0; i < str.length(); i++) {
+        st.push(str[i]);
     }
 
-    // This string will store the reversed result
-    string ans = "";
-
-    // Step 2: Pop characters from stack until it becomes empty
-    while (!s.empty()) {
-
-        // Get the top element of stack
-        char ch = s.top();
-
-        // Add this character to answer string
-        // This gives reverse order automatically
-        ans.push_back(ch);
-
-        // Remove the top element from stack
-        s.pop();
+    // Pop characters from the stack and overwrite the string
+    for(int i = 0; i < str.length(); i++) {
+        str[i] = st.top();
+        st.pop();
     }
-
-    // Print the reversed string
-    cout << "answer is: " << ans << endl;
-
-    return 0;   // Program ends successfully
 }
+
+int main() {
+
+    string str;
+
+    cout << "Enter a string: ";
+    cin >> str;
+
+    reverseString(str);
+
+    cout << "Reversed String: " << str << endl;
+
+    return 0;
+}
+//output
+// Enter a string: HELLO
+// Reversed String: OLLEH
