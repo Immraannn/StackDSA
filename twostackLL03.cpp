@@ -1,7 +1,16 @@
 #include <iostream>
 using namespace std;
 
+class Node {
+public:
+    int data;
+    Node* next;
 
+    Node(int d) {
+        data = d;
+        next = NULL;
+    }
+};
 class TwoStack {
 private:
     Node* top1;   // Top pointer for Stack 1
@@ -80,3 +89,17 @@ int main() {
 
     return 0;
 }
+//
+
+// Stack 1
+
+// top1
+//  ↓
+// 30 → 20 → 10 → NULL
+
+
+// Stack 2
+
+// top2
+//  ↓
+// 300 → 200 → 100 → NULL
