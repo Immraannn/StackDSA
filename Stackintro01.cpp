@@ -116,3 +116,123 @@ int main() {
 
     return 0;   // End of program
 }
+
+// Stack implementation using Linkedlist
+
+#include <iostream>
+using namespace std;
+
+// Node of Linked List
+class Node {
+public:
+    int data;       // Stores stack element
+    Node* next;     // Points to next node
+
+    Node(int d) {
+        data = d;
+        next = NULL;
+    }
+};
+
+// Stack using Linked List
+class Stack {
+
+    Node* top;       // Points to top of stack
+
+public:
+
+    // Constructor
+    Stack() {
+        top = NULL;
+    }
+
+    // Push an element onto the stack
+    void push(int x) {
+
+        // Create new node
+        Node* newNode = new Node(x);
+
+        // New node points to current top
+        newNode->next = top;
+
+        // Move top to new node
+        top = newNode;
+    }
+
+    // Remove top element
+    void pop() {
+
+        // Stack is empty
+        if(top == NULL) {
+            cout << "Stack Underflow\n";
+            return;
+        }
+
+        // Store current top
+        Node* temp = top;
+
+        // Move top to next node
+        top = top->next;
+
+        // Delete old top node
+        delete temp;
+    }
+
+    // Return top element
+    int peek() {
+
+        if(top == NULL) {
+            cout << "Stack is Empty\n";
+            return -1;
+        }
+
+        return top->data;
+    }
+
+    // Check whether stack is empty
+    bool isEmpty() {
+
+        return top == NULL;
+    }
+
+    // Print stack
+    void display() {
+
+        if(top == NULL) {
+            cout << "Stack is Empty\n";
+            return;
+        }
+
+        Node* temp = top;
+
+        while(temp != NULL) {
+            cout << temp->data << " ";
+            temp = temp->next;
+        }
+
+        cout << endl;
+    }
+};
+
+int main() {
+
+    Stack st;
+
+    st.push(10);
+    st.push(20);
+    st.push(30);
+
+    cout << "Stack: ";
+    st.display();
+
+    cout << "Top = " << st.peek() << endl;
+
+    st.pop();
+
+    cout << "After Pop: ";
+    st.display();
+
+    cout << "Top = " << st.peek() << endl;
+
+    return 0;
+}
