@@ -1,3 +1,11 @@
+// intuition
+// To reverse the stack:
+// Remove the top element.
+// Recursively reverse the remaining stack.
+// Insert the removed element at the bottom.
+// This process repeats until the stack becomes empty.
+
+
 #include <iostream>
 #include <stack>
 using namespace std;
@@ -77,3 +85,38 @@ int main() {
 
     return 0;
 }
+
+
+Call Stack Visualization
+Going Down
+reverseStack()
+│
+├── Pop 50
+│
+├── reverseStack()
+│      │
+│      ├── Pop 40
+│      │
+│      ├── reverseStack()
+│      │      │
+│      │      ├── Pop 30
+│      │      │
+│      │      ├── reverseStack()
+│      │      │      │
+│      │      │      ├── Pop 20
+│      │      │      │
+│      │      │      ├── reverseStack()
+│      │      │      │      │
+│      │      │      │      ├── Pop 10
+│      │      │      │      │
+│      │      │      │      └── Stack Empty
+Returning (Backtracking)
+Insert 10 at Bottom
+        ↓
+Insert 20 at Bottom
+        ↓
+Insert 30 at Bottom
+        ↓
+Insert 40 at Bottom
+        ↓
+Insert 50 at Bottom
