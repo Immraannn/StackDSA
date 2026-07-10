@@ -1,4 +1,9 @@
-#include <iostream>
+// Why do we use a stack?
+// A stack follows LIFO (Last In, First Out). The most recently encountered opening bracket must be
+// the first one to be matched with a closing bracket. This behavior matches the nesting property of
+// parentheses exactly, which is why a stack is the ideal data structure for this problem.
+
+// #include <iostream>
 #include <stack>
 using namespace std;
 
