@@ -1,52 +1,59 @@
-bool isValidParenthesis(string expression)
-{
-    // Stack to store opening brackets
-    stack<char> s;
+#include <iostream>
+#include <stack>
+using namespace std;
 
-    // Traverse each character of the string
-    for(int i = 0; i < expression.length(); i++) {
+// Function to check whether parentheses are valid
+bool isValid(string str) {
 
-        char ch = expression[i];
+    stack<char> st;
 
-        // If current character is an opening bracket,
-        // push it onto the stack
+    // Traverse every character of the string
+    for(int i = 0; i < str.length(); i++) {
+
+        char ch = str[i];
+
+        // Push every opening bracket
         if(ch == '(' || ch == '{' || ch == '[') {
-            s.push(ch);
+            st.push(ch);
         }
+
+        // Current character is a closing bracket
         else {
-            // Current character is a closing bracket
 
-            // Check if stack is not empty
-            if(!s.empty()) {
+            // No opening bracket available
+            if(st.empty())
+                return false;
 
-                // Get the top element of the stack
-                char top = s.top();
+            char top = st.top();
 
-                // Check for matching opening bracket
-                if( (ch == ')' && top == '(') || 
-                    (ch == '}' && top == '{') || 
-                    (ch == ']' && top == '[') ) {
+            // Check for matching pair
+            if((ch == ')' && top == '(') ||
+               (ch == '}' && top == '{') ||
+               (ch == ']' && top == '[')) {
 
-                    // Matching pair found, pop opening bracket
-                    s.pop();
-                }
-                else {
-                    // Closing bracket does not match stack top
-                    return false;
-                }
+                st.pop();   // Remove matched opening bracket
             }
             else {
-                // Closing bracket found but stack is empty
-                // No opening bracket available
-                return false;
+                return false;   // Mismatched bracket
             }
         }
     }
 
-    // After processing all characters,
-    // stack should be empty for valid expression
-    if(s.empty())
-        return true;
+    // If stack is empty, all brackets matched
+    return st.empty();
+}
+
+int main() {
+
+    string str;
+
+    cout << "Enter expression: ";
+    cin >> str;
+
+    if(isValid(str))
+        cout << "Valid Parentheses";
     else
-        return false;
+        cout << "Invalid Parentheses";
+
+    return 0;
 }
