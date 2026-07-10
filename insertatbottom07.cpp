@@ -1,3 +1,9 @@
+// intuition
+// Since we can only access the top of the stack:
+// Pop all elements one by one.
+// When the stack becomes empty, push the new element.
+// During recursion backtracking, push all previously removed elements back.
+
 #include <iostream>          // Header file for input-output operations
 #include <stack>             // Header file for stack STL
 using namespace std;         // Allows using std names without std::
@@ -81,3 +87,31 @@ Explanation:
 - 0 is inserted at the bottom
 - Stack is printed from top to bottom
 */
+
+Call Stack Visualization
+Going Down
+insertAtBottom(100)
+│
+├── Pop 50
+│
+├── Pop 40
+│
+├── Pop 30
+│
+├── Pop 20
+│
+├── Pop 10
+│
+└── Stack Empty
+      │
+      └── Push 100
+Returning (Backtracking)
+Push 10
+    ↓
+Push 20
+    ↓
+Push 30
+    ↓
+Push 40
+    ↓
+Push 50
