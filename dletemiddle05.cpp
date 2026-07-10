@@ -59,3 +59,38 @@ OUTPUT:
 Stack after deleting middle element:
 50 40 20 10
 */
+
+Call Stack Visualization
+Going Down
+deleteMiddle(0)
+│
+├── Pop 50
+│
+└── deleteMiddle(1)
+      │
+      ├── Pop 40
+      │
+      └── deleteMiddle(2)
+              │
+              ├── count == mid
+              └── Pop 30 (Deleted)
+Returning (Backtracking)
+deleteMiddle(2)
+      │
+      └── Return
+
+deleteMiddle(1)
+      │
+      └── Push 40
+
+deleteMiddle(0)
+      │
+      └── Push 50
+
+
+Key Idea
+Going down the recursion: Remove elements from the top until the middle is reached.
+At the base case: Delete the middle element.
+While backtracking: Push all previously removed elements back in the same order.
+
+This preserves the original stack order, except that the middle element has been removed.
