@@ -1,3 +1,12 @@
+// Intuition
+// The idea is similar to Reverse Stack.
+// Pop the top element.
+// Recursively sort the remaining stack.
+// Insert the popped element into its correct sorted position.
+// So, we need two recursive functions:
+// sortStack() → Sorts the stack.
+// sortedInsert() → Inserts an element into its correct position.
+
 #include <iostream>
 #include <stack>
 using namespace std;
@@ -60,3 +69,34 @@ int main() {
     }
     // Output: 5 4 2 1 (top to bottom)
 }
+
+
+
+
+Call Stack Visualization
+Going Down
+sortStack()
+│
+├── Pop 10
+│
+├── sortStack()
+│     │
+│     ├── Pop 2
+│     │
+│     ├── sortStack()
+│     │      │
+│     │      ├── Pop 14
+│     │      │
+│     │      ├── sortStack()
+│     │      │      │
+│     │      │      ├── Pop 5
+│     │      │      │
+│     │      │      └── Empty
+Returning
+Insert 5
+      ↓
+Insert 14
+      ↓
+Insert 2
+      ↓
+Insert 10
