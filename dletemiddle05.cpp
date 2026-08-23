@@ -1,29 +1,20 @@
 #include <iostream>
 #include <stack>
 using namespace std;
-
 void deleteMiddle(stack<int> &s, int count, int mid) {
-    // Base case: middle element reached
     if (count == mid) {
-        s.pop();   // delete middle element
+        s.pop();   
         return;
     }
-
-    // Store top element
     int temp = s.top();
     s.pop();
-
-    // Recursive call
     deleteMiddle(s, count + 1, mid);
-
     // Push elements back while returning
     s.push(temp);
 }
 
 int main() {
     stack<int> s;
-
-    // Pushing elements into stack
     s.push(10);
     s.push(20);
     s.push(30);
