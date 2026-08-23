@@ -1,58 +1,45 @@
-#include<iostream>     // For input-output operations (cout, endl)
-#include<stack>        // For STL stack (used in commented section)
-using namespace std;   // To avoid writing std:: again and again
-
-// User-defined Stack class
+#include<iostream>     
+#include<stack>        
+using namespace std;   
 class Stack {
-    // ---------------- PROPERTIES ----------------
     public:
-        int *arr;      // Pointer to dynamically allocated array (stack storage)
-        int top;       // Index of the top element in stack
-        int size;      // Maximum capacity of the stack
-
-    // ---------------- CONSTRUCTOR ----------------
+        int *arr;      
+        int top;       
+        int size;      
     Stack(int size) {
-        this->size = size;     // Assign stack size
-        arr = new int[size];   // Dynamically allocate memory
-        top = -1;              // Stack is empty initially
+        this->size = size;    
+        arr = new int[size];   
+        top = -1;              
     }
-
-    // ---------------- PUSH OPERATION ----------------
     void push(int element) {
-        // Check if there is space in stack
-        if (size - top > 1) {   // Equivalent to: top < size - 1
-            top++;              // Move top upward
-            arr[top] = element;// Insert element at top
+        if (size - top > 1) {  
+            top++;              
+            arr[top] = element;
         }
         else {
-            cout << "Stack OverFlow" << endl; // Stack full
+            cout << "Stack OverFlow" << endl; 
         }
     }
 
-    // ---------------- POP OPERATION ----------------
     void pop() {
-        if (top >= 0) {   // Stack is not empty
-            top--;        // Remove top element (logical deletion)
+        if (top >= 0) {   
+            top--;        
         }
         else {
-            cout << "Stack UnderFlow" << endl; // Stack already empty
+            cout << "Stack UnderFlow" << endl; 
         }
     }
-
-    // ---------------- PEEK OPERATION ----------------
     int peek() {
-        if (top >= 0) {         // Stack has at least one element
-            return arr[top];    // Return top element
+        if (top >= 0) {         
+            return arr[top];    
         }
         else {
             cout << "Stack is Empty" << endl;
-            return -1;          // Invalid value
+            return -1;         
         }
     }
-
-    // ---------------- EMPTY CHECK ----------------
     bool isEmpty() {
-        if (top == -1) {  // No element present
+        if (top == -1) { 
             return true;
         }
         else {
@@ -62,19 +49,13 @@ class Stack {
 };
 
 int main() {
-
-    // Create stack of size 5
     Stack st(5);
-
-    // Pushing elements into stack
     st.push(22);
     st.push(43);
     st.push(44);
     st.push(22);
     st.push(43);
     st.push(44);  // This will cause Stack Overflow
-
-    // Print top element
     cout << st.peek() << endl;
 
     // Remove top element
