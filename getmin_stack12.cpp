@@ -1,36 +1,21 @@
 #include <iostream>
 #include <stack>
 using namespace std;
-
 class SpecialStack
 {
     stack<int> s;          // Main stack to store all elements
     stack<int> minStack;   // Stores the minimum element at each stage
 
 public:
-
-    // Insert an element into the stack
     void push(int x)
     {
-        // Push the element into the main stack
         s.push(x);
 
-        // If minStack is empty, then this is the first element,
-        // so it is automatically the minimum.
-        //
-        // OR
-        //
-        // If the new element is smaller than or equal to the current minimum,
-        // push it into minStack as well.
-        //
-        // We use <= instead of < to correctly handle duplicate minimum values.
         if (minStack.empty() || x <= minStack.top())
         {
             minStack.push(x);
         }
     }
-
-    // Remove the top element from the stack
     void pop()
     {
         // Stack underflow
@@ -54,11 +39,8 @@ public:
     // Return the top element of the stack
     int top()
     {
-        // Stack is empty
         if (s.empty())
             return -1;
-
-        // Return the top element of the main stack
         return s.top();
     }
 
