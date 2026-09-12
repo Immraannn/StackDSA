@@ -6,7 +6,7 @@ vector<int> nextSmallerElement(vector<int> &arr, int n) {
     stack<int> s;          
     vector<int> ans(n);    
     for(int i = n - 1; i >= 0; i--) {
-        while(!s.empty() && s.top() >= arr[i]) {
+        while(!s.empty() &&  arr[i])<=s.top() {
             s.pop();       // Pop elements until smaller element is found
         }
         // If stack becomes empty
